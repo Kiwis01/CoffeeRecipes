@@ -1,12 +1,16 @@
-from flask import Flask, render_template, url_for, request
+
 import os
-import keys
+from flask import Flask, render_template, url_for, request
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.chat_models import ChatOpenAI
+from dotenv import load_dotenv, dotenv_values
+
+#secret key load
+load_dotenv('.env')
 
 #Langchain initialization
-os.environ["OPENAI_API_KEY"] = keys.APIKEY
+os.environ["OPENAI_API_KEY"] = os.getenv("APIKEY")
 loader = TextLoader('prompt.txt')
 index = VectorstoreIndexCreator().from_loaders([loader])
 
