@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Coffee Recipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Custom Coffee Recipes</h1>
+        <nav>
+            <!-- Add links to other pages if needed -->
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <!-- Your recipe cards and content will go here -->
+        <div class="recipe-card">
+            <h2>Classic Cappuccino</h2>
+            <p>A delightful espresso-based drink with equal parts espresso, steamed milk, and frothed milk.</p>
+            <ul>
+                <li>1 shot of espresso</li>
+                <li>1/3 cup of steamed milk</li>
+                <li>1/3 cup of frothed milk</li>
+                <li>Cocoa powder or cinnamon for topping (optional)</li>
+            </ul>
+        </div>
+        <!-- Text box for user input -->
+
+        <form class="grid" action="/recipe" method="POST">
+            <h2>Custom Recipe</h2>
+            <input type="text" id="name" name="name">    
+            <input class="file_submit" type="Submit">
+
+            {% if name %}
+            <div class="custom-recipe">
+                <h3 style="color: rgb(0, 0, 0);" class="let_space">{{ name }}</h3>
+                <h4>Ingredients:</h4>
+                <p>{{ ingredients }}</p>
+                <h5>Instructions:</h5>
+                <p>{{ instructions }}</p>
+            </div>
+            {% endif %}
+          </form>
+    </div>
+</body>
+</html>
+
